@@ -1,0 +1,11 @@
+ultralytics
+opencv-python
+easyocr
+numpy
+pandas
+torch
+torchvision
+fastapi
+uvicorn
+python-dotenv
+psycopg2-binary

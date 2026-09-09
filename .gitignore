@@ -1,32 +1,49 @@
-# Prerequisites
-*.d
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+# Environment
+.env
 
-# Precompiled Headers
-*.gch
-*.pch
+# Jupyter
+.ipynb_checkpoints/
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+# VS Code
+.vscode/
 
-# Fortran module files
-*.mod
-*.smod
+# AI models
+*.pt
+*.onnx
+*.pth
+*.weights
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+# Videos
+*.mp4
+*.avi
+*.mov
+*.mkv
 
-# Executables
-*.exe
-*.out
-*.app
+# Generated outputs
+data/outputs/*
+output_*.mp4
+detections_*.csv
+
+# Logs
+*.log
+
+# Node
+node_modules/
+dist/
+build/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary
+*.tmp
+*.temp
