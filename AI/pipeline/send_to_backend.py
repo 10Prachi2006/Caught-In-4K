@@ -14,9 +14,16 @@ def send_sighting(sighting: dict, timeout: float = 5.0):
         response = requests.post(BACKEND_URL, json=sighting, timeout=timeout)
         response.raise_for_status()
         result = response.json()
+
         if result.get("watchlist_match"):
-            print(f"  🚨 WATCHLIST MATCH: {result['plate_number']} "
-                  f"-> {result['alert']['status']} ({result['alert']['priority']})")
+            alert = result["alert"]
+            if alert.get("match_type") == "possible":
+                print(f"  ⚠️  POSSIBLE MATCH: {result['plate_number']} "
+                      f"(verify against watchlist plate {alert['matched_plate']}) "
+                      f"-> {alert['status']} ({alert['priority']})")
+            else:
+                print(f"  🚨 WATCHLIST MATCH: {result['plate_number']} "
+                      f"-> {alert['status']} ({alert['priority']})")
         else:
             print(f"  Stored sighting: {result['plate_number']} (no watchlist match)")
         return result

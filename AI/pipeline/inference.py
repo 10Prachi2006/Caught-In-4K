@@ -3,6 +3,11 @@ The full pipeline: frame -> vehicle detect+track -> crop -> plate detect
 -> crop -> preprocess -> OCR (multiple variants) -> best valid reading
 -> confidence score -> one sighting dict per vehicle.
 """
+import os, cv2
+
+DEBUG_DIR = "debug_plates"
+os.makedirs(DEBUG_DIR, exist_ok=True)
+_debug_counter = 0
 
 from ai.detection.vehicle_detector import VehicleDetector
 from ai.detection.plate_detector import PlateDetector
@@ -36,13 +41,25 @@ class ANPRPipeline:
                 px1, py1, px2, py2 = plate["bbox"]
                 fx1, fy1, fx2, fy2 = x1 + px1, y1 + py1, x1 + px2, y1 + py2
                 plate_crop = frame[fy1:fy2, fx1:fx2]
+
+
+                # inside process_frame, right after: plate_crop = frame[fy1:fy2, fx1:fx2]
+                global _debug_counter
+                _debug_counter += 1
+                cv2.imwrite(f"{DEBUG_DIR}/track{vehicle['track_id']}_{_debug_counter}.jpg", plate_crop)
+
+
                 if plate_crop.size == 0:
                     continue
 
+
+
                 variants = preprocess_plate(plate_crop)
-                all_ocr_results = []
-                for variant_img in variants.values():
-                    all_ocr_results.extend(self.ocr.read(variant_img))
+                # fast-plate-ocr does its own internal normalization and
+                # was trained on natural color crops - unlike EasyOCR, it
+                # does NOT benefit from the gray/threshold variants (those
+                # can actually hurt it). Feed it the upscaled original only.
+                all_ocr_results = self.ocr.read(variants["original"])
                 all_ocr_results = [r for r in all_ocr_results if r["confidence"] >= ocr_conf_min]
 
                 best = best_valid_reading(all_ocr_results, mode=self.plate_mode)
@@ -57,6 +74,7 @@ class ANPRPipeline:
                     "vehicle_confidence": vehicle["confidence"],
                     "plate_confidence": plate["confidence"],
                     "ocr_confidence": best["confidence"],
+                    "char_confidences": best.get("char_confidences", []),
                     "plate_number": best["plate_number"],
                     "combined_confidence": score,
                     "bbox": [fx1, fy1, fx2, fy2],

@@ -15,10 +15,16 @@ INDIAN_PLATE_PATTERN = re.compile(r"^[A-Z]{2}[0-9]{1,2}[A-Z]{1,3}[0-9]{1,4}$")
 GENERIC_PLATE_PATTERN = re.compile(r"^(?=.*[A-Z])(?=.*[0-9])[A-Z0-9]{5,10}$")
 
 
-def normalize_plate(raw_text: str) -> str:
+def normalize_plate_with_confidences(raw_text: str, char_confidences: list):
+    """Like normalize_plate(), but keeps each surviving character's
+    confidence lined up with it, so callers can vote per-position later."""
     text = raw_text.upper()
-    text = re.sub(r"[^A-Z0-9]", "", text)
-    return text
+    kept_chars, kept_confs = [], []
+    for i, ch in enumerate(text):
+        if ch.isalnum():
+            kept_chars.append(ch)
+            kept_confs.append(char_confidences[i] if i < len(char_confidences) else None)
+    return "".join(kept_chars), kept_confs
 
 
 def looks_like_indian_plate(text: str) -> bool:

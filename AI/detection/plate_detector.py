@@ -34,15 +34,20 @@ class PlateDetector:
         self.model = YOLO(model_path)
 
     def detect(self, vehicle_crop, confidence=0.35):
-        """Input: crop of ONE vehicle. Output: plate box(es) in
-        VEHICLE-CROP coordinates - caller offsets to full-frame coords."""
         if vehicle_crop is None or vehicle_crop.size == 0:
             return []
         results = self.model(vehicle_crop, conf=confidence, verbose=False)[0]
+        h, w = vehicle_crop.shape[:2]
         plates = []
         for box in results.boxes:
             conf = float(box.conf[0])
             x1, y1, x2, y2 = map(int, box.xyxy[0])
+            pad_x = int((x2 - x1) * 0.18)
+            pad_y = int((y2 - y1) * 0.20)
+            x1 = max(0, x1 - pad_x)
+            y1 = max(0, y1 - pad_y)
+            x2 = min(w, x2 + pad_x)
+            y2 = min(h, y2 + pad_y)
             plates.append({"bbox": [x1, y1, x2, y2], "confidence": conf})
         plates.sort(key=lambda p: p["confidence"], reverse=True)
-        return plates[:1]  # a vehicle has one plate - keep the best box
+        return plates[:1]
