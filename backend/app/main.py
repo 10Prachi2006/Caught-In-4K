@@ -46,6 +46,7 @@ from .models import Alert, Camera, VehicleSighting, WatchlistEntity
 from .schemas import (
     AlertOut,
     AlertStatusUpdate,
+    CameraCreate,
     CameraOut,
     DashboardSummaryOut,
     VehicleSightingCreate,
@@ -264,6 +265,27 @@ def update_alert(alert_id: str, body: AlertStatusUpdate, db: Session = Depends(g
 def get_cameras(db: Session = Depends(get_db)):
     rows = db.query(Camera).all()
     return [CameraOut.model_validate(r) for r in rows]
+
+
+@app.post("/api/cameras")
+def upsert_camera(payload: CameraCreate, db: Session = Depends(get_db)):
+    """Register a new camera, or update one that already exists at this id.
+    Called by the live-stream server when a new video is uploaded, so the
+    uploaded footage immediately shows up on the GIS map / dashboard counts
+    the same way a hardcoded camera does."""
+    row = db.query(Camera).filter(Camera.id == payload.id).first()
+    if row is None:
+        row = Camera(id=payload.id)
+        db.add(row)
+    row.name = payload.name
+    row.department = payload.department
+    row.lat = payload.lat
+    row.lng = payload.lng
+    row.status = payload.status
+    row.vendor = payload.vendor
+    db.commit()
+    db.refresh(row)
+    return CameraOut.model_validate(row)
 
 
 # Alias — frontend calls both /cameras and /cameras/status

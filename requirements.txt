@@ -1,11 +1,12 @@
 ultralytics
 opencv-python
 easyocr
+huggingface_hub
+requests
 numpy
-pandas
-torch
-torchvision
+
 fastapi
-uvicorn
+uvicorn[standard]
+sqlalchemy
+pydantic
 python-dotenv
-psycopg2-binary

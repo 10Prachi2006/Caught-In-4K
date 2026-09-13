@@ -2,48 +2,50 @@
 __pycache__/
 *.py[cod]
 *.pyo
+.pytest_cache/
 .venv/
 venv/
 env/
 
 # Environment
 .env
+.env.*
 
-# Jupyter
-.ipynb_checkpoints/
+# Keep example env
+!.env.example
 
-# VS Code
-.vscode/
+# Runtime database
+*.db
+*.sqlite
+*.sqlite3
 
-# AI models
-*.pt
-*.onnx
-*.pth
-*.weights
+# Runtime uploads/evidence
+uploads/*
+static/evidence/*
+!uploads/.gitkeep
+!static/evidence/.gitkeep
 
-# Videos
-*.mp4
-*.avi
-*.mov
-*.mkv
-
-# Generated outputs
-data/outputs/*
-output_*.mp4
-detections_*.csv
-
-# Logs
+# Debug
+debug_plates/
+debug/
 *.log
 
-# Node
-node_modules/
-dist/
-build/
+# Generated video/output
+output_*.mp4
+outputs/
+
+# Generated datasets/results
+detections_*.csv
+
+# Archives
+*.zip
+*.rar
+*.7z
+
+# IDE
+.vscode/
+.idea/
 
 # OS
 .DS_Store
 Thumbs.db
-
-# Temporary
-*.tmp
-*.temp

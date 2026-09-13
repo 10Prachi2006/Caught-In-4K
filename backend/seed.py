@@ -44,6 +44,15 @@ CAMERAS = [
         status="online",
         vendor="Dahua",
     ),
+    Camera(
+        id="cam03",
+        name="Demo Camera — Uploaded Footage",
+        department="Demo",
+        lat=23.03,
+        lng=72.58,
+        status="online",
+        vendor="Demo",
+    ),
 ]
 
 for cam in CAMERAS:

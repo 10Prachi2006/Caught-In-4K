@@ -39,6 +39,20 @@ class CameraOut(BaseModel):
     vendor: Optional[str] = None
 
 
+class CameraCreate(BaseModel):
+    """Used to register/upsert a camera — including one backed by an
+    uploaded video file rather than a live RTSP source."""
+    model_config = ConfigDict(populate_by_name=True)
+
+    id: str
+    name: str
+    department: str = "Uploaded Footage"
+    lat: float
+    lng: float
+    status: str = "online"
+    vendor: Optional[str] = "Uploaded File"
+
+
 # ─── VehicleSighting ──────────────────────────────────────────────────────────
 
 class VehicleSightingOut(BaseModel):
