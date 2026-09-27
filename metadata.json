@@ -1,0 +1,6 @@
+{
+  "name": "IVMAP: Intelligent Video Management and Analytics Platform for Unified CCTV Intelligence",
+  "description": "IVMAP - Intelligent Video Management and Analytics Platform for Unified CCTV Intelligence featuring real-time ANPR, live surveillance feeds, threat alerts, GIS tracking, camera registry, and advanced vehicle investigation.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

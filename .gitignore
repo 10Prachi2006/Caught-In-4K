@@ -1,51 +1,24 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
 # Python
 __pycache__/
 *.py[cod]
-*.pyo
-.pytest_cache/
-.venv/
-venv/
+*$py.class
+*.so
+.Python
 env/
-
-# Environment
-.env
-.env.*
-
-# Keep example env
-!.env.example
-
-# Runtime database
-*.db
-*.sqlite
-*.sqlite3
-
-# Runtime uploads/evidence
-uploads/*
-static/evidence/*
-!uploads/.gitkeep
-!static/evidence/.gitkeep
-
-# Debug
+venv/
+.venv/
+ENV/
+*.egg-info/
+.pytest_cache/
+uploads/
 debug_plates/
-debug/
-*.log
 
-# Generated video/output
-output_*.mp4
-outputs/
-
-# Generated datasets/results
-detections_*.csv
-
-# Archives
-*.zip
-*.rar
-*.7z
-
-# IDE
-.vscode/
-.idea/
-
-# OS
-.DS_Store
-Thumbs.db

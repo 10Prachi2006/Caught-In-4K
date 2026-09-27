@@ -1,0 +1,28 @@
+# IVMAP → Real CCTV Grid Integration Tasks
+
+- `[/]` Task 1 — Add `GET /api/live-grid/cameras` proxy + `POST /api/live-grid/sync` in `server.ts`
+  - `[ ]` Add `CCTV_GRID_HOST` env var read
+  - `[ ]` In-memory cache (8 s TTL)
+  - `[ ]` `GET /api/live-grid/cameras` route
+  - `[ ]` `POST /api/live-grid/sync` route
+  - `[ ]` Startup call to `db.syncCamerasFromGrid()`
+- `[ ]` Task 1b — Update `.env.example` and `.env`
+- `[/]` Task 2 — Add `syncCamerasFromGrid()` to `db.ts`
+  - `[ ]` Fix fake RTSP URLs in DEFAULT_CAMERAS seed
+  - `[ ]` Fix default streamUrl in `createCamera()`
+  - `[ ]` Add `syncCamerasFromGrid()` upsert method
+- `[/]` Task 3 — Fix `LiveVideoPlayer.tsx`
+  - `[ ]` Remove `loop` from `<video>`
+  - `[ ]` Remove RTSP full banner; replace with small fallback note
+- `[/]` Task 4 — Fix HLS error handler with exponential backoff
+  - `[ ]` Add `reconnectMsg` state
+  - `[ ]` Replace ERROR handler with fatal/non-fatal check + backoff reinit
+- `[/]` Task 5 — Live polling + "Sync from Grid" button in `CameraRegistry.tsx`
+  - `[ ]` 20 s polling interval for `/api/live-grid/cameras`
+  - `[ ]` "Sync from Grid" button calling `POST /api/live-grid/sync`
+- `[/]` Task 6 — Fix `LiveStreamGuideModal.tsx`
+  - `[ ]` Replace Tab 1 (MediaMTX) with shared CCTV grid guide
+  - `[ ]` Fix Tab 4 Python endpoint (`/api/pipeline/ingest` → `/api/sightings`)
+- `[ ]` Task 8 — Create `docs/BACKEND_DECISION.md`
+- `[ ]` Add `getLiveGridCameras()` to `api.ts`
+- `[ ]` Verify build compiles

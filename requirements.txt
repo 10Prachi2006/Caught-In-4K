@@ -5,6 +5,8 @@ huggingface_hub
 requests
 numpy
 
+
+fast-plate-ocr[onx]
 fastapi
 uvicorn[standard]
 sqlalchemy
