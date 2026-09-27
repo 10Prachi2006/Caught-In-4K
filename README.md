@@ -171,11 +171,15 @@ Full fleet visibility ➺  vendor, sensor resolution, FPS, uptime, live detectio
 ### 🚩 Watchlist Management
 Seeding and managing the synthetic demo watchlist ➺  plate number, category (stolen / wanted / suspect), priority, case reference, and operator directives.
 
-<img width="70%"/>
+
 <table>
 <tr>
-<td width="50%"><img  src="docs/demo/27.09.2026_19.37.33_REC.png" alt="Add watchlist entry modal"/></td>
-<td width="50%"><img src="docs/demo/27.09.2026_19.43.48_REC.png" alt="GIS map ➺  zoomed camera popup with Open Stream / Inspect Alert"/></td>
+<td width="50%"><img src="docs/demo/27.09.2026_19.37.33_REC.png" alt="Add watchlist entry modal"/></td>
+<td width="50%"><img src="docs/demo/27.09.2026_21.10.10_REC.png" alt="Zoomed camera popup with Open Stream / Inspect Alert"/></td>
+</tr>
+<tr>
+<td align="center"><i>Add watchlist entry modal</i></td>
+<td align="center"><i>Zoomed camera popup with Open Stream / Inspect Alert</i></td>
 </tr>
 </table>
 
