@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/screenshots/hero-banner.png" alt="IVMAP — Intelligent Video Management & Analytics Platform" width="100%"/>
+<img src="docs/demo/27.09.2026_19.45.00_REC.png" alt="IVMAP — Intelligent Video Management & Analytics Platform" width="100%"/>
 
 # 🛰️ IVMAP
 ### Intelligent Video Management & Analytics Platform
@@ -115,7 +115,7 @@ IVMAP is a hybrid, **metadata-first** CCTV analytics platform that proves the fu
 ### 🏠 Command Dashboard & Live Pipeline
 System-wide KPIs (registered cameras, network health, active alerts, cumulative ANPR passes) alongside the actual terminal output of the live inference workers — the numbers on screen come from real detections, not mock data.
 
-<img src="docs/screenshots/dev-live-pipeline.png" alt="IVMAP Dashboard with live pipeline logs" width="100%"/>
+<img src="docs/demo/27.09.2026_19.44.24_REC.png" alt="IVMAP Dashboard with live pipeline logs" width="100%"/>
 
 ---
 
@@ -133,18 +133,18 @@ Each camera feed is annotated live with its detection box, an OCR read (with agr
 </tr>
 </table>
 
-<img src="docs/screenshots/live-camera-detail.png" alt="Live camera detail modal — uptime, detections, active alerts" width="100%"/>
+<img src="docs/demo/27.09.2026_19.40.27_REC.png" alt="Live camera detail modal — uptime, detections, active alerts" width="100%"/>
 
 ---
 
 ### 🔎 Vehicle Search — Cross-Camera Investigation
 Search any plate and get its full, chronological, cross-camera sighting history — first seen, last seen, vehicle type, confidence-scored detections, and evidence — with a one-click watchlist-match callout.
 
-<img src="docs/screenshots/vehicle-search.png" alt="Vehicle ANPR investigation and multi-criteria search" width="100%"/>
+<img src="docs/demo/27.09.2026_19.37.57_REC.pn" alt="Vehicle ANPR investigation and multi-criteria search" width="100%"/>
 
 **Actual evidence frame from the pipeline**, plate box drawn directly on the source video frame:
 
-<img src="docs/screenshots/anpr-evidence-frame.png" alt="ANPR evidence frame with detected plate DL3CAM1234" width="70%"/>
+<img src="docs/demo/27.09.2026_19.41.52_REC.png" alt="ANPR evidence frame with detected plate DL3CAM1234" width="70%"/>
 
 ---
 
@@ -153,8 +153,8 @@ Every camera plotted on a live Ahmedabad map; a searched plate's inferred route 
 
 <table>
 <tr>
-<td width="50%"><img src="docs/screenshots/gis-map.png" alt="GIS map — full city view with route lines"/></td>
-<td width="50%"><img src="docs/screenshots/gis-map-route.png" alt="GIS map — zoomed camera popup with Open Stream / Inspect Alert"/></td>
+<td width="50%"><img src="docs/demo/27.09.2026_19.43.20_REC.png" alt="GIS map — full city view with route lines"/></td>
+<td width="50%"><img src="docs/demo/27.09.2026_19.43.48_REC.png" alt="GIS map — zoomed camera popup with Open Stream / Inspect Alert"/></td>
 </tr>
 </table>
 
@@ -163,15 +163,15 @@ Every camera plotted on a live Ahmedabad map; a searched plate's inferred route 
 ### 📋 Camera Registry
 Full fleet visibility — vendor, sensor resolution, FPS, uptime, live detection counts — plus an edit modal for onboarding a new node (RTSP/HLS/MP4 ingress URI, GPS lat/lng, frame rate).
 
-<img src="docs/screenshots/camera-registry-list.png" alt="Camera registry — list of edge nodes" width="100%"/>
-<img src="docs/screenshots/camera-registry-edit.png" alt="Edit camera node modal" width="100%"/>
+<img src="docs/demo/27.09.2026_19.42.47_REC.png" alt="Camera registry — list of edge nodes" width="100%"/>
+<img src="docs/demo/27.09.2026_19.44.24_REC.png" alt="Edit camera node modal" width="100%"/>
 
 ---
 
 ### 🚩 Watchlist Management
 Seeding and managing the synthetic demo watchlist — plate number, category (stolen / wanted / suspect), priority, case reference, and operator directives.
 
-<img src="docs/screenshots/watchlist-add-entry.png" alt="Add watchlist entry modal" width="70%"/>
+<img src="docs/demo/27.09.2026_19.37.33_REC.png" alt="Add watchlist entry modal" width="70%"/>
 
 ---
 
