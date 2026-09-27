@@ -124,7 +124,7 @@ Each camera feed is annotated live with its detection box, an OCR read (with agr
 
 <table>
 <tr>
-<td width="50%"><img src="docs/demo/27.09.2026_19.41.52_REC.png" alt="Live monitoring ➺  CAM-02 with OCR overlay"/></td>
+<td width="50%"><img src="docs/demo/27.09.2026_19.40.27_REC.png" alt="Live monitoring ➺  CAM-02 with OCR overlay"/></td>
 <td width="50%"><img src="docs/demo/27.09.2026_19.44.06_REC.png" alt="Live monitoring ➺  CAM-02 zoomed with green tracking box"/></td>
 </tr>
 <tr>
@@ -133,7 +133,7 @@ Each camera feed is annotated live with its detection box, an OCR read (with agr
 </tr>
 </table>
 
-<img src="docs/demo/27.09.2026_19.40.27_REC.png" alt="Live camera detail modal ➺  uptime, detections, active alerts" width="100%"/>
+<img src="docs/demo/27.09.2026_19.41.52_REC.png" alt="Live camera detail modal ➺  uptime, detections, active alerts" width="100%"/>
 
 ---
 
@@ -171,7 +171,13 @@ Full fleet visibility ➺  vendor, sensor resolution, FPS, uptime, live detectio
 ### 🚩 Watchlist Management
 Seeding and managing the synthetic demo watchlist ➺  plate number, category (stolen / wanted / suspect), priority, case reference, and operator directives.
 
-<img src="docs/demo/27.09.2026_19.37.33_REC.png" alt="Add watchlist entry modal" width="70%"/>
+<img width="70%"/>
+<table>
+<tr>
+<td width="50%"><img  src="docs/demo/27.09.2026_19.37.33_REC.png" alt="Add watchlist entry modal"/></td>
+<td width="50%"><img src="docs/demo/27.09.2026_19.43.48_REC.png" alt="GIS map ➺  zoomed camera popup with Open Stream / Inspect Alert"/></td>
+</tr>
+</table>
 
 ---
 
@@ -640,30 +646,6 @@ Nothing about the MVP's core pipeline needs to be thrown away to reach productio
 | **Frontend showing `Math.random()` detections during early integration** | UI was scaffolded ahead of the real backend being wired in | Explicitly disclosed which screens were live vs. still a UI shell, rather than presenting mocked output as real inference ➺  judged safer than pretending everything was already connected |
 
 **Key engineering principle we kept coming back to:** when an OCR model systematically misreads a character with high confidence, no amount of aggregation-layer cleverness fixes it ➺  the tolerance has to move to the *matching* layer (fuzzy watchlist comparison), not the OCR layer.
-
----
-
-## 🚧 Honest Scope ➺  What's Real vs. What's Future Work
-
-We'd rather be evaluated on an honest, working pipeline than an impressive-looking fake one.
-
-**✅ Real, running, and demoed on actual inference:**
-- YOLOv8 vehicle detection + ByteTrack tracking
-- Dedicated plate detection (not a heuristic crop)
-- OCR + preprocessing + multi-frame consensus voting
-- Weighted confidence scoring
-- Exact + fuzzy watchlist matching with alert generation
-- Live per-camera workers with MJPEG streaming
-- Cross-camera route reconstruction on a GIS map
-- Full Vehicle Search, Alert Centre, Camera Registry, Watchlist Management screens
-
-**🔜 Documented as the production path:**
-- Live RTSP/ONVIF integration against real department VMS hardware
-- Redis/Kafka event bus, Kubernetes orchestration
-- PostGIS-backed spatial queries (currently plain lat/lng columns)
-- Full RBAC granularity, immutable audit logging
-- The frontend Live Monitoring screen consuming the MJPEG endpoints directly (currently polls REST, same visual result)
-- Real VAHAN / eGujCop / AFIS integrations (no MVP-time API access)
 
 ---
 
